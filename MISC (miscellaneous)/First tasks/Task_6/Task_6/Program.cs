@@ -10,10 +10,10 @@ namespace Task_6
     {
         static void Main(string[] args)
         {
-            Double x1 = 0;
-            Double x2 = 0;
-            Double y1 = 0;
-            Double y2 = 0;
+            Double x1;
+            Double x2;
+            Double y1;
+            Double y2;
             Double XY;
             Console.WriteLine("Напишите координаты двух точек");
             Console.WriteLine();
