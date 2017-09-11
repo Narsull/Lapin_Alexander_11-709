@@ -11,15 +11,14 @@ namespace Expr5
     {
         static void Main(string[] args)
         {
-            Double a;
-            Double b;
-            Double c;
+            int a;
+            int b;
+            int c;
+            int d;
             Console.WriteLine("Напишите временной отрезок от одного года до другого");
-            a = Convert.ToDouble(Console.ReadLine());
-            b = Convert.ToDouble(Console.ReadLine());
-            c = b - a;
-            c = c / 4 ;
-            c = c - (c % 4);
+            a = Convert.ToInt32(Console.ReadLine());
+            b = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("Количество високосных лет равно " + c);
             Console.Read();
         }
