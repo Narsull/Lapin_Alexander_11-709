@@ -13,12 +13,15 @@ namespace Expr4
             Double N;
             Double X;
             Double Y;
+            Double K;
             Console.Write("N =");
             N = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("X =");
-            X = Convert.ToDouble(Console.Read());
-            Console.WriteLine("Y =");
-            Y = Convert.ToDouble(Console.Read());
+            Console.Write("X =");
+            X = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Y =");
+            Y = Convert.ToDouble(Console.ReadLine());
+            K = (N - 1) / Y + (N - 1)/X - (N - 1) / (Y * X);
+            Console.Write(K);
             Console.ReadLine();
         }
     }
