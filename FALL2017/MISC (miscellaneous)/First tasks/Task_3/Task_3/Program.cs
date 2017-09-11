@@ -14,6 +14,7 @@ namespace Task_3
             Double Gradus;
             Console.WriteLine("Введите час");
             Chas = Convert.ToDouble(Console.ReadLine());
+            Chas = Chas % 12;
             if (Chas > 6)
             {
                 Chas = 12 - Chas;
