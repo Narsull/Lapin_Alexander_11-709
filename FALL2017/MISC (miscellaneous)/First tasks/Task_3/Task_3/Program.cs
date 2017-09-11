@@ -14,15 +14,12 @@ namespace Task_3
             Double Gradus;
             Console.WriteLine("Введите час");
             Chas = Convert.ToDouble(Console.ReadLine());
-            if (Chas > 12)
+            if (Chas > 6)
             {
-                Chas = Chas - 12;
+                Chas = 12 - Chas;
             }
             Gradus = Chas * 30;
-            if (Gradus > 360)
-                {
-                Gradus = Gradus - 360;
-            }
+
             if (Chas % 12 == 0)
             {
                 Gradus = 0;
