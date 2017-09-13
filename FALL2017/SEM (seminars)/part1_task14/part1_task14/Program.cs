@@ -10,11 +10,11 @@ namespace part1_task14
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Напишите номер билета");
+            Console.WriteLine("Напишите номер билета"); //123456
             int ticket = Convert.ToInt32(Console.ReadLine());
-            int a = (ticket / 100000) - ((ticket % 100000) / 100000); // Первая цифра
-            int b = (ticket / 10000) - (a * 10) - ((ticket % 10000) / 10000); // Вторая цифра
-            int c = (ticket / 1000) - (a * 100 + b * 10) - ((ticket % 1000) / 1000); // Третья цифра
+            int a = (ticket / 100000); // Первая цифра
+            int b = (ticket / 10000) - (a * 10); // Вторая цифра
+            int c = (ticket / 1000) - (a * 100 + b * 10); // Третья цифра
             int d = ((ticket % 1000) - (ticket % 100)) / 100; // Четвёртая цифра
             int e = ((ticket % 100) - (ticket % 10)) / 10; // Пятая цифра
             int f = ticket % 10; // Шестая цифра
