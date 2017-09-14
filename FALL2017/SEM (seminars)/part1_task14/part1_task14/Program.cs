@@ -13,7 +13,7 @@ namespace part1_task14
             Console.WriteLine("Напишите номер билета");
             int ticket = Convert.ToInt32(Console.ReadLine());
             string str = (ticket.ToString());
-                if (str.Length == 6)
+                if (str.Length == 6) // Проверка на шестизначность
             {
                 int a = (ticket / 100000); // Первая цифра
                 int b = (ticket / 10000) - (a * 10); // Вторая цифра
