@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace part3_task20
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int amount2 = 0;
+            int amount1 = 0;
+            int i2 = 0;
+            int i1 = 0;
+            Console.WriteLine("Введите последовательность чисел.");
+            for (int a = 1; a != 0; a++)
+            {
+                int i = Convert.ToInt32(Console.ReadLine());
+                if (i != 0)
+                {
+                    if (i % 2 == 0)
+
+                    {
+                        amount2 = amount2 + i;
+                        i2 = i2 + 1;
+                    }
+                    else
+                    {
+                        amount1 = amount1 + i;
+                        i1 = i1 + 1;
+                    }
+                }
+                else a = 0;
+            }
+            if (i1 >= i2)
+            {
+                if (i1 > i2)
+                {
+                    Console.WriteLine("Сумма нечётных чисел равна " + amount1);
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка.");
+                    Console.WriteLine("Количество введённых чеётных и нечётных чисел равно.");
+                }
+            }
+            else Console.WriteLine("Сумма чётных чисел равна " + amount2);
+            Console.Read();
+        }
+    }
+}
+
