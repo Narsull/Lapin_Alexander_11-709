@@ -10,10 +10,12 @@ namespace part3_task10
     {
         static void Main(string[] args)
         {
-            Double x = Convert.ToDouble(Console.Read());
-            Double y = Convert.ToDouble(Console.Read());
-            Double z = 2 * x * 134 * y - Math.Pow(x, 2);
-            Console.WriteLine(z);
+
+            for (int a = 0; str = "Stop"; a++)
+            {
+
+            }
+
         }
     }
 }
