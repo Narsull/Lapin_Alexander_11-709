@@ -11,7 +11,7 @@ namespace Percents
         public static double Calculate(string userInput)
         {
             double[] amount = userInput.Split().Select(double.Parse).ToArray();
-            double contribution = amount[0], number = userInput[0], percent = amount[1], time = amount[2];
+            double contribution = amount[0], percent = amount[1], time = amount[2];
             for (int a = 0; a < time; a++)
                 contribution += contribution * ((percent / 12) / 100);
             return contribution;
