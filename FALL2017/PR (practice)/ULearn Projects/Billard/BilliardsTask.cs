@@ -9,7 +9,7 @@ namespace Billiards
             //That's work.
             // I think.
             // I bealive.
-            return 2 * directionRadians - wallInclinationRadians;
+            return 2 * wallInclinationRadians - directionRadians;
 		}
 	}
 }
