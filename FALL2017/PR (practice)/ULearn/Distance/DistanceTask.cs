@@ -14,19 +14,15 @@ namespace DistanceTask
             {
                 return 0;
             }
-            else
+            else if (x <= bx && x >= ax && ab != 0)
             {
                 double perimeter = (aPoint + bPoint + ab) / 2;
                 double square = Math.Sqrt((perimeter * (perimeter - aPoint) * (perimeter - bPoint) * (perimeter - ab)));
-                double distance = (2 * square) / ab;
-                if ((2 * square / ab) > Math.Min(aPoint, bPoint))
-                {
-                    return Math.Min(aPoint, bPoint);
-                }
-                else
-                {
-                    return (2 * square) / ab;
-                }
+                return (2 * square) / ab;
+            }
+            else
+            {
+                return Math.Min(aPoint, bPoint);
             }
         }
     }
