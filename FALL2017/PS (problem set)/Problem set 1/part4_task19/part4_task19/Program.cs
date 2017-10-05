@@ -13,6 +13,7 @@ namespace part4_task19
             int number = Convert.ToInt32(Console.ReadLine());
             int divider = 1;
             int a = 1;
+
             while (a < number)
             {
                 if (number % a == 0)
@@ -21,6 +22,7 @@ namespace part4_task19
                 }
                 a++;
             }
+
             Console.WriteLine(divider);
             Console.Read();
         }
