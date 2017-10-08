@@ -34,8 +34,6 @@ namespace Mazes
 			yield return new MazeTestCase("pyramid2", PyramidMazeTask.MoveOut);
 			yield return new MazeTestCase("pyramid3", PyramidMazeTask.MoveOut);
 			yield return new MazeTestCase("pyramid4", PyramidMazeTask.MoveOut);
-
-//			Да, чтобы поотлаживать диагональные лабиринты, нужно раскомментировать эти строки!
 			yield return new MazeTestCase("diagonal1", DiagonalMazeTask.MoveOut);
 			yield return new MazeTestCase("diagonal2", DiagonalMazeTask.MoveOut);
 			yield return new MazeTestCase("diagonal3", DiagonalMazeTask.MoveOut);
