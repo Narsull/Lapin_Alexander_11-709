@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace from_09._10._17
 {
     class Program
