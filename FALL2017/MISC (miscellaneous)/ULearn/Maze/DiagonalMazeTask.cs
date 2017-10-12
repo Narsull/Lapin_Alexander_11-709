@@ -6,6 +6,9 @@ namespace Mazes
     {
         public static void MoveOut(Robot robot, int width, int height)
         {
+            height -= 2;
+            width -= 2;
+
             if (height > width)
                 MoveDown(robot, width, height);
             else
@@ -14,77 +17,38 @@ namespace Mazes
 
         public static void MoveRight(Robot robot, int width, int height)
         {
-            double i = 1;
-            if (width > height)
-            {
-                i = (double)(height + width) / height;
-                i = Math.Round(i);
-            }
-            else
-            {
-                i = (double)(height + width) / width;
-                i = Math.Round(i);
-            }
-            for (int a = 1; a <= i; a++)
-            {
-                robot.MoveTo(Direction.Right);
-                {
+            int i;
 
-                    i = 1;
-                    if (height > width)
-                    {
-                        i = (double)(height + width) / width;
-                        i = Math.Round(i);
-                    }
-                    else
-                    {
-                        i = (double)(height + width) / height;
-                        i = Math.Round(i);
-                    }
-                    for (a = 1; a <= i; a++)
-                    {
-                        robot.MoveTo(Direction.Down);
-                    }
-                }
+            if (height / width == 1 && width / height == 0 || height / width == 0 && width / height == 1)
+                i = 1;
+            else
+                i = (height + width + 4) / (height + 2);
+
+            for (int c = 1; c <= height; c++)
+            {
+                for (int a = 0; a < i; a++)
+                    robot.MoveTo(Direction.Right);
+                if (c < height)
+                    robot.MoveTo(Direction.Down);
             }
         }
 
         public static void MoveDown(Robot robot, int width, int height)
         {
+            int i;
 
-            double i = 1;
-            if (height > width)
-            {
-                i = (double)(height + width - 4) / width;
-                i = Math.Round(i);
-            }
+            if (height / width == 1 && width / height == 0 || height / width == 0 && width / height == 1)
+                i = 1;
             else
-            {
-                i = (double)(height + width - 4) / height;
-                i = Math.Round(i);
-            }
-            for (int a = 1; a <= i; a++)
-            {
-                robot.MoveTo(Direction.Down);
-                {
-                    i = 1;
-                    if (width > height)
-                    {
-                        i = (double)(height + width - 4) / height;
-                        i = Math.Round(i);
-                    }
-                    else
-                    {
-                        i = (double)(height + width - 4) / width;
-                        i = Math.Round(i);
-                    }
-                    for (a = 1; a <= i; a++)
-                    {
-                        robot.MoveTo(Direction.Right);
-                    }
-                }
-            }
+                i = (height + width + 4) / (width + 2);
 
+            for (int c = 1; c <= width; c++)
+            {
+                for (int a = 0; a < i; a++)
+                    robot.MoveTo(Direction.Down);
+                if (c < width)
+                    robot.MoveTo(Direction.Right);
+            }
         }
     }
 }
