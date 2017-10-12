@@ -44,18 +44,18 @@ namespace Mazes
 
         public static void MoveRight(Robot robot, int width, int height, int i, int c)
         {
-                for (int a = 0; a < i; a++)
-                    robot.MoveTo(Direction.Right);
-                if (c < height)
-                    robot.MoveTo(Direction.Down);
+            for (int a = 0; a < i; a++)
+                robot.MoveTo(Direction.Right);
+            if (c < height)
+                robot.MoveTo(Direction.Down);
         }
 
         public static void MoveDown(Robot robot, int width, int height, int i, int c)
         {
-                for (int a = 0; a < i; a++)
-                    robot.MoveTo(Direction.Down);
-                if (c < width)
-                    robot.MoveTo(Direction.Right);
+            for (int a = 0; a < i; a++)
+                robot.MoveTo(Direction.Down);
+            if (c < width)
+                robot.MoveTo(Direction.Right);
         }
     }
 }

@@ -12,15 +12,14 @@ namespace from_09._10._17
 
             if (n >= 1 && n <= 27)
             {
-                for (int a = 100; a < 1000; a++)
+                for (int i = 100; i < 1000; i++)
                 {
-                    string aString = Convert.ToString(a);
-                    int number0 = Convert.ToInt32(aString.Substring(0, 1));
-                    int number1 = Convert.ToInt32(aString.Substring(1, 1));
-                    int number2 = Convert.ToInt32(aString.Substring(2, 1));
+                    string iString = Convert.ToString(i);
+                    int number0 = Convert.ToInt32(iString.Substring(0, 1));
+                    int number1 = Convert.ToInt32(iString.Substring(1, 1));
+                    int number2 = Convert.ToInt32(iString.Substring(2, 1));
 
-                    int amount = number0 + number1 + number2;
-                    if (amount == n)
+                    if (number0 + number1 + number2 == n)
                         count++;
                 }
                 Console.WriteLine(count);
