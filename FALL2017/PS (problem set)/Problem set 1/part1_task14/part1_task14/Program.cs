@@ -12,17 +12,19 @@ namespace part1_task14
         {
             Console.WriteLine("Напишите номер билета");
             int ticket = Convert.ToInt32(Console.ReadLine());
-            string str = (ticket.ToString());
-                if (str.Length == 6) // Проверка на шестизначность
+            string ticketString = (ticket.ToString());
+                if (ticketString.Length == 6)
             {
-                int a = (ticket / 100000); // Первая цифра
-                int b = (ticket / 10000) - (a * 10); // Вторая цифра
-                int c = (ticket / 1000) - (a * 100 + b * 10); // Третья цифра
-                int d = ((ticket % 1000) - (ticket % 100)) / 100; // Четвёртая цифра
-                int e = ((ticket % 100) - (ticket % 10)) / 10; // Пятая цифра
-                int f = ticket % 10; // Шестая цифра
-                int amount1 = a + b + c; // Сумма первых трёх цифр
-                int amount2 = d + e + f; // Сумма последних трёх цифр
+                int number1 = Convert.ToInt32(ticketString.Substring(0, 1));
+                int number2 = Convert.ToInt32(ticketString.Substring(1, 1));
+                int number3 = Convert.ToInt32(ticketString.Substring(2, 1));
+                int number4 = Convert.ToInt32(ticketString.Substring(3, 1));
+                int number5 = Convert.ToInt32(ticketString.Substring(4, 1));
+                int number6 = Convert.ToInt32(ticketString.Substring(5, 1));
+
+                int amount1 = number1 + number2 + number3; 
+                int amount2 = number4 + number5 + number6;
+
                 if (amount1 == amount2)
                 {
                     Console.WriteLine("Поздравляем!");
