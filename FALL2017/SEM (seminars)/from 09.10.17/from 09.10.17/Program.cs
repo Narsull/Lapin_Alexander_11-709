@@ -10,7 +10,7 @@ namespace from_09._10._17
 
             int count = 0;
 
-            if (n >= 1 && n <= 27)
+            if (n > 0 && n < 28)
             {
                 for (int i = 100; i < 1000; i++)
                 {
