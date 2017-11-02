@@ -7,25 +7,26 @@ namespace DistanceTask
         // Расстояние от точки (x, y) до отрезка AB с координатами A(ax, ay), B(bx, by)
         public static double GetDistanceToSegment(double ax, double ay, double bx, double by, double x, double y)
         {
-            double aPoint = Math.Sqrt(Math.Pow(x - ax, 2) + Math.Pow(y - ay, 2));
-            double bPoint = Math.Sqrt(Math.Pow(x - bx, 2) + Math.Pow(y - by, 2));
-            double ab = Math.Sqrt(Math.Pow(ax - bx, 2) + Math.Pow(ay - by, 2));
-            double cosPoint = (Math.Pow(aPoint, 2) - Math.Pow(bPoint, 2) + Math.Pow(ab, 2)) / (2 * aPoint * ab);
+            double ak = Math.Sqrt((x - ax) * (x - ax) + (y - ay) * (y - ay));
+            double kb = Math.Sqrt((x - bx) * (x - bx) + (y - by) * (y - by));
+            double ab = Math.Sqrt((ax - bx) * (ax - bx) + (ay - by) * (ay - by));
 
-            if ((x - ax) * (by - ay) - (y - ay) * (bx - ax) == 0 && aPoint + bPoint == ab)
+            double ScalarA = (x - ax) * (bx - ax) + (y - ay) * (by - ay);
+            double ScalarB = (x - bx) * (-bx + ax) + (y - by) * (-by + ay);
+
+            if (ab == 0)
+                return ak;
+            else if (ScalarA >= 0 && ScalarB >= 0)
             {
-                return 0;
+                double p = (ak + kb + ab) / 2.0;
+                double s = Math.Sqrt(Math.Abs((p * (p - ak) * (p - kb) * (p - ab))));
+                return (2.0 * s) / ab;
             }
-            else if (cosPoint > 0)
+            else if (ScalarA < 0 || ScalarB < 0)
             {
-                double perimeter = (aPoint + bPoint + ab) / 2;
-                double square = Math.Sqrt((perimeter * (perimeter - aPoint) * (perimeter - bPoint) * (perimeter - ab)));
-                return (2 * square) / ab;
+                return Math.Min(ak, kb);
             }
-            else
-            {
-                return Math.Min(aPoint, bPoint);
-            }
+            else return 0;
         }
     }
 }
