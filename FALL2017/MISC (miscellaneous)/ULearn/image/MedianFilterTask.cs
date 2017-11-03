@@ -1,21 +1,36 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace Recognizer
 {
-	internal static class MedianFilterTask
-	{
-		/* 
-		 * Для борьбы с пиксельным шумом, подобным тому, что на изображении,
-		 * обычно применяют медианный фильтр, в котором цвет каждого пикселя, 
-		 * заменяется на медиану всех цветов в некоторой окрестности пикселя.
-		 * https://en.wikipedia.org/wiki/Median_filter
-		 * 
-		 * Используйте окно размером 3х3 для не граничных пикселей,
-		 * Окно размером 2х2 для угловых и 3х2 или 2х3 для граничных.
-		 */
-		public static double[,] MedianFilter(double[,] original)
-		{
-			return original;
-		}
-	}
+    internal static class MedianFilterTask
+    {
+        public static double[,] MedianFilter(double[,] original)
+        {
+            int xLenght = original.GetLength(0);
+            int yLenght = original.GetLength(1);
+            double[,] medianFilter = new double[xLenght, yLenght];
+
+            for (int x = 0; x < xLenght; x++)
+                for (int y = 0; y < yLenght; y++)
+                {
+                    List<double> pixel = new List<double>();
+
+                    for (int i = -1; i < 2; i++)
+                        for (int j = -1; j < 2; j++)
+                        {
+                            if (x + i != xLenght && x + i != -1 && y + j != yLenght && y + j != -1)
+                                pixel.Add(original[x + i, y + j]);
+                        }
+
+                    pixel.Sort();
+
+                    if (pixel.Count % 2 == 1)
+                        medianFilter[x, y] = pixel[pixel.Count / 2];
+                    else
+                        medianFilter[x, y] = (pixel[pixel.Count / 2] + pixel[pixel.Count / 2 - 1]) / 2;
+                }
+
+            return medianFilter;
+        }
+    }
 }
