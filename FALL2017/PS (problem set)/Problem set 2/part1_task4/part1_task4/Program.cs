@@ -1,5 +1,9 @@
 ﻿using System;
 
+/* Лапин Александр
+ * Группа 11-709
+ * Задание 4 из первой части вторых семистровок */
+
 namespace part1_task4
 {
     class Program

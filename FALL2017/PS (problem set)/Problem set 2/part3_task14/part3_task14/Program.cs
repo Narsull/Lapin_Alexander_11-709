@@ -1,9 +1,12 @@
 ﻿using System;
 
+/* Лапин Александр
+ * Группа 11-709
+ * Задание 14 из третьей части вторых семистровок */
 namespace part3_task14
 {
     class Program
-    { 
+    {
         static void Main(string[] args)
         {
             Console.WriteLine(LeftRectangles(0, 1.2, 100));
@@ -74,24 +77,19 @@ namespace part3_task14
             double x;
             int y = 0;
 
-            for (int i = 0; i < n; i++)
+            for (int i = n; i > 0; i--)
             {
-                x = GetRandom(a, b);
+                Random random = new Random();
+                x = a + (b - a) * random.NextDouble();
+
+                if (x <= b && x >= a)
                 {
-                    if (x <= b && x >= a)
-                    {
-                        result += Function(x);
-                        y++;
-                    }
+                    result += Function(x);
+                    y++;
                 }
+
             }
             return (result / y) * (b - a);
-        }
-
-        public static double GetRandom(double b, double a)
-        {
-            Random random = new Random();
-            return a + (b - a) * random.NextDouble();
         }
     }
 }
