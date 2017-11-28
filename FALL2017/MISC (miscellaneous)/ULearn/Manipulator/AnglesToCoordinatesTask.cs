@@ -1,68 +1,72 @@
 ﻿using System;
+using System.Drawing;
+using NUnit.Framework;
 
-namespace part1_task11
+namespace Manipulation
 {
-    class Program
+    public static class AnglesToCoordinatesTask
     {
-        static void Main(string[] args)
+        public static PointF[] GetJointPositions(double shoulder, double elbow, double wrist)
         {
-            double e = Double.Parse(Console.ReadLine());
+            float elbowPosX, elbowPosY, wristPosX, wristPosY, palmEndPosX, palmEndPosY;
+            elbowPosX = (float)Math.Cos(shoulder) * Manipulator.UpperArm;
+            elbowPosY = (float)Math.Sin(shoulder) * Manipulator.UpperArm;
 
-            Console.WriteLine(CountOfSteps(e));
-            Console.ReadKey();
-
-
-        }
-
-        static int CountOfSteps(double e)
-        {
-            double result = 0;
-            double result1 = 1;
-            int k = -1;
-
-            while (Math.Abs(result1 - result) > e)
+            if (elbow <= 180)
             {
-                result1 = result;
-                k++;
+                wristPosX = (float)Math.Cos(elbow - (90 - shoulder)) * Manipulator.Forearm;
+                wristPosY = (float)Math.Sin(elbow - (90 - shoulder)) * Manipulator.Forearm;
 
-                result += Dividend(k, x) / Divider(k, x);
+                if ()
+                }
+            else
+            {
+                wristPosX = (float)Math.Cos(elbow - (90 - shoulder)) * Manipulator.Forearm;
+                wristPosY = (float)Math.Sin(elbow - (90 - shoulder)) * Manipulator.Forearm;
             }
 
-            return k;
-        }
 
-        static double Dividend(double k, double x)
-        {
-            double firstElement;
-            if (k % 2 == 0)
-                firstElement = 1;
-            else firstElement = -1;
+            elbowPosX = -(float)Math.Cos(90 - (shoulder - 90)) * Manipulator.UpperArm;
+            elbowPosY = (float)Math.Sin(90 - (shoulder - 90)) * Manipulator.UpperArm;
 
-            double secondElement = 1;
-            for (int i = 1; i < 2 * k; i++)
+            if (elbow <= 180)
             {
-                secondElement *= i;
+                wristPosX = (float)Math.Cos(elbow - (90 - shoulder)) * Manipulator.Forearm;
+                wristPosY = (float)Math.Sin(elbow - (90 - shoulder)) * Manipulator.Forearm;
+            }
+            else
+            {
+                wristPosX = (float)Math.Cos(elbow - (90 - shoulder)) * Manipulator.Forearm;
+                wristPosY = (float)Math.Sin(elbow - (90 - shoulder)) * Manipulator.Forearm;
             }
 
-            double thirdElement = Math.Pow(x, k);
 
-            return firstElement * secondElement * thirdElement;
-        }
+            var elbowPos = new PointF(elbowPosX, elbowPosY);
+            var wristPos = new PointF(wristPosX, wristPosY);
+            var palmEndPos = new PointF(palmEndPosX, palmEndPosY);
 
-        static double Divider(double k, double x)
-        {
-            double firstElement = 1 - 2 * k;
-
-            double secondElement = 1;
-            for (int i = 1; i < k; i++)
+            return new PointF[]
             {
-                secondElement *= i;
-            }
-            secondElement = Math.Pow(secondElement, 2);
-
-            double thirdElement = Math.Pow(4, k);
-
-            return firstElement * secondElement * thirdElement;
+                elbowPos,
+                wristPos,
+                palmEndPos
+            };
         }
     }
+    [TestFixture]
+    public class AnglesToCoordinatesTask_Tests
+    {
+        // Доработайте эти тесты!
+        // С помощью строчки TestCase можно добавлять новые тестовые данные. Аргументы TestCase превратятся в аргументы метода.
+        [TestCase(Math.PI / 2, Math.PI / 2, Math.PI, Manipulator.Forearm + Manipulator.Palm, Manipulator.UpperArm)]
+        public void TestGetJointPositions(double shoulder, double elbow, double wrist, double palmEndX, double palmEndY)
+        {
+            var joints = AnglesToCoordinatesTask.GetJointPositions(shoulder, elbow, wrist);
+            Assert.AreEqual(palmEndX, joints[2].X, 1e-5, "palm endX");
+            Assert.AreEqual(palmEndY, joints[2].Y, 1e-5, "palm endY");
+            Assert.Fail("TODO: проверить, что расстояния между суставами равны длинам соответствующих сегментов манипулятора!");
+        }
+
+    }
+
 }
