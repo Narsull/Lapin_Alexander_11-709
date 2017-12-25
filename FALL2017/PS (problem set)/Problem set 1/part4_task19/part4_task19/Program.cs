@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Лапин Александр
+ * Группа 11-709
+ * Задание 19 из четвёртой части первых семистровок */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* Лапин Александр
+ * Группа 11-709
+ * Задание 14 из первой части первых семистровок */
+
+using System;
 
 namespace part1_task14
 {
