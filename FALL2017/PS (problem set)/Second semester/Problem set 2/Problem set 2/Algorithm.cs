@@ -5,33 +5,23 @@ namespace Problem_set_2
 {
     class Algorithm
     {
-        static int Iterations;
-
         static public void StoogeSort(List<int> list, int left, int right)
         {
-            Iterations = 1;
             if (list[left] > list[right])
             {
                 list[left] = list[left] + list[right];
                 list[right] = list[left] - list[right];
                 list[left] = list[left] - list[right];
-                Iterations = Iterations + 3;
             }
 
-            Iterations++;
             if (left + 1 >= right)
-            {
-                Console.WriteLine("{0} - {1}", list.Count, Iterations);
                 return;
-            }
-
             else
             {
                 int third = (right - left + 1) / 3;
                 StoogeSort(list, left, right - third);
                 StoogeSort(list, left + third, right);
                 StoogeSort(list, left, right - third);
-                Iterations = Iterations + 4;
             }
         }
 
@@ -53,6 +43,17 @@ namespace Problem_set_2
                 StoogeSort(array, left + third, right);
                 StoogeSort(array, left, right - third);
             }
+        }
+
+        static public void StoogeSort(LinkedList<int> linkedList, int left, int right)
+        {
+            int length = linkedList.Count;
+            int[] array = new int[length];
+            linkedList.CopyTo(array, 0);
+            linkedList.Clear();
+            StoogeSort(array, left, right);
+            foreach (int e in array)
+                linkedList.AddLast(e);
         }
     }
 }
